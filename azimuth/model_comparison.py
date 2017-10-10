@@ -533,7 +533,7 @@ def predict(seq, aa_cut=None, percent_peptide=None, model=None, model_file=None,
         assert isinstance(percent_peptide, (np.ndarray)), "Please ensure percent_peptide is a numpy array"
         assert np.all(np.isreal(percent_peptide)), "percent_peptide needs to be a real number"
 
-    if model_file is None:
+    if model_file is None and model is None:
         azimuth_saved_model_dir = os.path.join(os.path.dirname(azimuth.__file__), 'saved_models')
         if np.any(percent_peptide == -1) or (percent_peptide is None and aa_cut is None):
             print("No model file specified, using V3_model_nopos")
