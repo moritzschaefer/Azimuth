@@ -190,9 +190,8 @@ def linreg_on_fold(feature_sets, train, test, y, y_all, X, dim, dimsum, learn_op
     # assert degenerate_pred[max_score_ind[0][0]]==0, "found degenerate predictions at max score"
 
     # in the unlikely event of tied scores, take the first one.
-    if len(max_score_ind[0]) > 1:
-        max_score_ind = [max_score_ind[0][0], max_score_ind[1][0]]
-
+    # if len(max_score_ind[0]) > 1: # need to extract anyways!
+    max_score_ind = [max_score_ind[0][0], max_score_ind[1][0]]
     best_alpha, best_l1r = learn_options["alpha"][max_score_ind[0]], l1_ratio[max_score_ind[1]]
 
     print("\t\tbest alpha is %f from range=%s" % (best_alpha, learn_options["alpha"][[0, -1]]))
