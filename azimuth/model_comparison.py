@@ -700,17 +700,17 @@ def write_results(predictions, file_to_predict):
 
 
 if __name__ == '__main__':
-
-    save_final_model_V3(
-        filename=os.path.join(
-            os.path.dirname(azimuth.__file__),
-            'saved_models/V3_model_nopos.pickle'),
-        include_position=False)
-    save_final_model_V3(
-        filename=os.path.join(
-            os.path.dirname(azimuth.__file__),
-            'saved_models/V3_model_full.pickle'),
-        include_position=True)
+    #
+    # save_final_model_V3(
+    #     filename=os.path.join(
+    #         os.path.dirname(azimuth.__file__),
+    #         'saved_models/V3_model_nopos.pickle'),
+    #     include_position=False)
+    # save_final_model_V3(
+    #     filename=os.path.join(
+    #         os.path.dirname(azimuth.__file__),
+    #         'saved_models/V3_model_full.pickle'),
+    #     include_position=True)
 
     # predict('GGGCCGCTGTTGCAGGTGGCGGGTAGGATC', 'sense', 1200, 30.3, model_file='../saved_models/final_model_nicolo.pickle')
 
@@ -745,7 +745,7 @@ if __name__ == '__main__':
         'adaboost_CV': False
     }
 
-    learn_options_set = {"post bug fix": learn_options}
+    learn_options_set = {"moritz1": learn_options}
 
-    #runner(['AdaBoost'], learn_options_set, orders=[2], where='local', adaboost_learning_rates=[0.1],  adaboost_max_depths=[3], adaboost_num_estimators=[100], exp_name='post-index-fix')
+    runner(['AdaBoost'], learn_options_set, orders=[1], where='local', adaboost_learning_rates=[0.1],  adaboost_max_depths=[3], adaboost_num_estimators=[100], exp_name='post-index-fix')
 # #util.feature_importances(results)

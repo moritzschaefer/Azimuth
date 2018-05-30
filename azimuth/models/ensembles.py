@@ -6,16 +6,14 @@ import sklearn
 from sklearn.linear_model import LinearRegression
 import scipy as sp
 import azimuth.models.regression
-import sklearn
 import sklearn.tree as tree
 from sklearn import svm
-from sklearn.grid_search import GridSearchCV
 from sklearn.cross_validation import cross_val_score
+
 
 def spearman_scoring(clf, X, y):
     y_pred = clf.predict(X).flatten()
     return sp.stats.spearmanr(y_pred, y.flatten())[0]
-
 
 
 def adaboost_on_fold(feature_sets, train, test, y, y_all, X, dim, dimsum, learn_options, classification=False):
