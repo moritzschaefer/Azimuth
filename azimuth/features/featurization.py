@@ -1,14 +1,17 @@
-import pandas
-import time
-import sklearn
-import numpy as np
-import Bio.SeqUtils as SeqUtil
-import Bio.Seq as Seq
-import azimuth.util
-import sys
-import Bio.SeqUtils.MeltingTemp as Tm
-import pickle
 import itertools
+import pickle
+import sys
+import time
+
+import Bio.Seq as Seq
+import Bio.SeqUtils as SeqUtil
+import Bio.SeqUtils.MeltingTemp as Tm
+import numpy as np
+import pandas
+import sklearn
+
+import azimuth.util
+
 
 def featurize_data(data, learn_options, Y, gene_position, pam_audit=True, length_audit=True, quiet=True):
     '''
@@ -141,7 +144,7 @@ def NGGX_interaction_feature(data, pam_audit=True):
         NX = seq[24]+seq[27]        
         NX_onehot = nucleotide_features(NX,order=2, feature_type='pos_dependent', max_index_to_use=2, prefix="NGGX")        
         # NX_onehot[:] = np.random.rand(NX_onehot.shape[0]) ##TESTING RANDOM FEATURE
-        feat_NX = pandas.concat([feat_NX, NX_onehot], axis=1)
+        feat_NX = pandas.concat([feat_NX, NX_onehot], axis=1, sort=True)  # set to sort=True to preserve deprecated default
     return feat_NX.T
 
 
